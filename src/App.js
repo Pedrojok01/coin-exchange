@@ -5,7 +5,6 @@ import Header from './components/ExchangeHeader/ExchangeHeader';
 import Footer from './components/ExchangeFooter/ExchangeFooter';
 import styled from 'styled-components';
 import axios from 'axios';
-
 import 'bootswatch/dist/darkly/bootstrap.min.css';
 import '@fortawesome/fontawesome-free/js/all';
 
@@ -16,33 +15,50 @@ const Div = styled.div`
   color: #eee6e6;
 `;
 
-const COIN_COUNT = 10;
+//const COIN_COUNT = 10;
 const formatPrice = price => parseFloat(Number(price).toFixed(2));
 
-function App(props) {
+function App() {
+  const [coinCount] = useState(20);
   const [balance, setBalance] = useState(25000);
   const [showBalance, setShowBalance] = useState(false);
   const [coinData, setCoinData] = useState([]);
+  
+  const getTopIds = async () => {
+    const response = await axios.get('https://api.coinpaprika.com/v1/coins');
+    return response.data.slice(0, coinCount).map(coin => coin.id);
+  }
+
+  const getNewCoinData = async (ids) => {
+    const response = await axios.get('https://api.coinpaprika.com/v1/tickers');
+    const coin = response.data;
+    let data = [];
+    
+    for (let i = 0; i < coin.length; i++) {
+      for (let j = 0; j < ids.length; j++) {
+        if (ids[j] === coin[i].id) {
+          data.push({ 
+            key: coin[i].id,
+            rank: coin[i].rank,
+            name: coin[i].name,
+            ticker: coin[i].symbol,
+            balance: 0,
+            price: formatPrice(coin[i].quotes.USD.price),
+            change: coin[i].quotes.USD.percent_change_7d + "%",
+          });
+        }
+        data.sort((a, b) => (a.rank > b.rank) ? 1 : -1)
+      }
+    }
+    return data;
+  }
 
   const componentDidMount = async () => {
-    const response = await axios.get('https://api.coinpaprika.com/v1/coins');
-    const coinIds = response.data.slice(0,COIN_COUNT).map(coin => coin.id);
-    const tickerUrl = 'https://api.coinpaprika.com/v1/tickers/';
-    const promises = coinIds.map(id => axios.get(tickerUrl + id));
-    const coinData = await Promise.all(promises);
-    const coinPriceData = coinData.map(function(response){
-      const coin = response.data;
-      return {
-        key: coin.id,
-        rank: coin.rank,
-        name: coin.name,
-        ticker: coin.symbol,
-        balance: 0,
-        price: formatPrice(coin.quotes.USD.price),
-      };    
-    });
-    setCoinData(coinPriceData);  
+    const topIds = await getTopIds();
+    const newCoinData = await getNewCoinData(topIds);
+    setCoinData(newCoinData);
   }
+
 
   useEffect(function(){
     if ( coinData.length === 0 ) {

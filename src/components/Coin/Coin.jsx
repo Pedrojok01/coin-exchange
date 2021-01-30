@@ -52,6 +52,7 @@ export default function Coin(props) {
             <TdName>{props.name}</TdName>
             <Td>{props.ticker}</Td>
             <TdName>${props.price}</TdName>
+            <Td>{props.change}</Td>
             <Td>{props.showBalance ? props.balance : '-'}</Td>
             <TdControl>
                 <form action="">

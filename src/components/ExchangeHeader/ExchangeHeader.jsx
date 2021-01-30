@@ -31,7 +31,7 @@ export default class ExchangeHeader extends Component {
             <Header>
                 <Img src={logo} alt="logo" />
                 <H1>
-                    Top 10 Crypto By Market Cap
+                    Top 20 Crypto By Market Cap
                 </H1>
             </Header>
         )
