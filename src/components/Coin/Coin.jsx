@@ -4,15 +4,19 @@ import styled from 'styled-components';
 
 const Td = styled.td`
     border: 1px solid #cccccc;
-    width: 16vh;
+    width: 12vw;
+`;
+
+const TdRank = styled(Td)`
+    width: 5vw;
 `;
 
 const TdControl = styled(Td)`
-    width: 29vw;
+    width: 25vw;
 `;
 
 const TdName = styled(Td)`
-    width: 20vw;
+    width: 18vw;
 `;
 
 const Button = styled.button`
@@ -44,6 +48,7 @@ export default function Coin(props) {
 
     return (
         <tr>
+            <TdRank>{props.rank}</TdRank>
             <TdName>{props.name}</TdName>
             <Td>{props.ticker}</Td>
             <TdName>${props.price}</TdName>

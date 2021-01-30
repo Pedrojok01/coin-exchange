@@ -5,7 +5,8 @@ import styled from 'styled-components';
 const Table = styled.table`
     font-size: 1rem;
     display: inline-block;
-    margin: 0 2rem 0 2rem;
+    width:90%;
+    overflow: auto;
 `;
 
 export default function CoinList (props) {
@@ -13,6 +14,7 @@ export default function CoinList (props) {
         <Table className="table table-primary table-bordered">
         <thead>
         <tr>
+            <th>Rank</th>
             <th>Name</th>
             <th>Ticker</th>
             <th>Price</th>
@@ -22,11 +24,12 @@ export default function CoinList (props) {
         </thead>
         <tbody>
             {
-            props.coinData.map( ({key, name, ticker, price, balance}) =>
+            props.coinData.map( ({key, rank, name, ticker, price, balance}) =>
                 <Coin
                 key={key}
                 handleRefresh={props.handleRefresh}
                 handleTransaction={props.handleTransaction}
+                rank={rank}
                 name={name}
                 ticker={ticker} 
                 price={price}

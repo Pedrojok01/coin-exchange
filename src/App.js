@@ -34,6 +34,7 @@ function App(props) {
       const coin = response.data;
       return {
         key: coin.id,
+        rank: coin.rank,
         name: coin.name,
         ticker: coin.symbol,
         balance: 0,
