@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import logo from './logo.svg';
+import logo from './logo.png';
 import styled from 'styled-components';
 
 const Img = styled.img`
@@ -9,7 +9,8 @@ const Img = styled.img`
 
 const Header = styled.header`
     background-color: #282c34;
-    min-height: 20vh;
+    min-height: 15vh;
+    width: 100%;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -19,6 +20,9 @@ const Header = styled.header`
 
 const H1 = styled.h1`
     font-size: 3rem;
+    line-height:8rem;
+    fold-weight: bold;
+    min-width: 300px;
 `;
 
 export default class ExchangeHeader extends Component {
@@ -27,7 +31,7 @@ export default class ExchangeHeader extends Component {
             <Header>
                 <Img src={logo} alt="logo" />
                 <H1>
-                    Coin Exchange
+                    Top 10 Crypto By Market Cap
                 </H1>
             </Header>
         )
