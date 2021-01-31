@@ -32,12 +32,9 @@ const Button = styled.button`
     border: 2px solid rgb(28, 110, 164); 
 `;
 
-const CoinName = styled(TdName)`
+const CoinName = styled.button`
+    font-size: 1rem;
     width: 18vw;
-    height: 100px;
-    outline: none;
-    border: hidden;
-    background: transparent;
 `;
 
 export default function Coin(props) {
@@ -69,22 +66,24 @@ export default function Coin(props) {
     return (
         <tr>
             <TdRank>{props.rank}</TdRank>
-            <CoinName 
-                className="btn btn-primary" 
-                onClick={CoinDescription}>
-                {props.name}
-            </CoinName>
+            <Td>
+                <CoinName 
+                    className="btn btn-primary" 
+                    onClick={CoinDescription}>
+                    {props.name}
+                </CoinName>
+            </Td>
             <Popup 
-                    open={open} 
-                    closeOnDocumentClick 
-                    onClose={closeModal}>
-                        <div className="popup">
-                        <button className="close" onClick={closeModal}>
-                            &times;
-                        </button>
-                            {coinDescription}
-                        </div>
-                </Popup>
+                open={open} 
+                closeOnDocumentClick 
+                onClose={closeModal}>
+                    <div className="popup">
+                    <button className="close" onClick={closeModal}>
+                        &times;
+                    </button>
+                        {coinDescription}
+                    </div>
+            </Popup>
             <Td>{props.ticker}</Td>
             <TdName>${props.price}</TdName>
             <Td>{props.change}</Td>
