@@ -37,7 +37,7 @@ export default function CoinList (props) {
                 change={change}
                 balance={balance}
                 showBalance={props.showBalance}
-                id = {key} />
+                id={key} />
             )}
         </tbody>
         </Table>

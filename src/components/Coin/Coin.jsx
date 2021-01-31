@@ -1,6 +1,9 @@
-import React from 'react';
+import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import './Coin.css';
+import axios from 'axios';
+import Popup from 'reactjs-popup';
 
 const Td = styled.td`
     border: 1px solid #cccccc;
@@ -29,7 +32,18 @@ const Button = styled.button`
     border: 2px solid rgb(28, 110, 164); 
 `;
 
+const CoinName = styled(TdName)`
+    width: 18vw;
+    height: 100px;
+    outline: none;
+    border: hidden;
+    background: transparent;
+`;
+
 export default function Coin(props) {
+    const [open, setOpen] = useState(false);
+    const closeModal = () => setOpen(false);
+    const [coinDescription, setCoinDescription] = useState('');
 
     const handleRefresh = (event) => {
         event.preventDefault();
@@ -45,10 +59,32 @@ export default function Coin(props) {
         props.handleTransaction(false, props.id);
     }
 
+    const CoinDescription = async (event) => {
+        setOpen(o => !o);
+        const promise = await axios.get(`https://api.coinpaprika.com/v1/coins/${props.id}`);
+        const coinDesc = promise.data.description;
+        setCoinDescription(coinDesc);
+    }
+
     return (
         <tr>
             <TdRank>{props.rank}</TdRank>
-            <TdName>{props.name}</TdName>
+            <CoinName 
+                className="btn btn-primary" 
+                onClick={CoinDescription}>
+                {props.name}
+            </CoinName>
+            <Popup 
+                    open={open} 
+                    closeOnDocumentClick 
+                    onClose={closeModal}>
+                        <div className="popup">
+                        <button className="close" onClick={closeModal}>
+                            &times;
+                        </button>
+                            {coinDescription}
+                        </div>
+                </Popup>
             <Td>{props.ticker}</Td>
             <TdName>${props.price}</TdName>
             <Td>{props.change}</Td>

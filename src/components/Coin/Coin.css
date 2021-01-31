@@ -1,0 +1,25 @@
+.popup > .close {
+    background-color:#282c34;
+    padding: 5px;
+}
+
+.popup-content {
+    margin: auto;
+    background: rgb(99, 99, 100);
+    width: 60%;
+    padding: 5px;
+    border: hidden;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1rem;
+}
+[role=tooltip].popup-content {
+    width: 200px;
+    box-shadow: 0 0 3px rgba(0,0,0,.16);
+    border-radius: 5px
+}
+.popup-overlay {
+    background: rgba(0,0,0,.5);
+}
+[data-popup=tooltip].popup-overlay {
+    background: transparent;
+}

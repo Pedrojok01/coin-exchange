@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import logo from './logo.png';
 import styled from 'styled-components';
-import HeaderStyling from './HeaderStyling.css';
+import HeaderRotation from './HeaderRotation.css';
 
 const Img = styled.img`
     height: 10vmin;
