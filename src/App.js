@@ -15,7 +15,6 @@ const Div = styled.div`
   color: #eee6e6;
 `;
 
-//const COIN_COUNT = 10;
 const formatPrice = price => parseFloat(Number(price).toFixed(2));
 
 function App() {
@@ -59,13 +58,11 @@ function App() {
     setCoinData(newCoinData);
   }
 
-
   useEffect(function(){
     if ( coinData.length === 0 ) {
       componentDidMount();
     }
   });
-
 
   const handleBalanceVisibilityChange = () => {
     setShowBalance(oldValue => !oldValue);
@@ -117,7 +114,6 @@ function App() {
         handleTransaction={handleTransaction}/>
       <Footer/>
     </Div>
-    
   );
 }
 

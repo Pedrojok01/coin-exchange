@@ -32,7 +32,6 @@ const Button = styled.button`
 export default function Coin(props) {
 
     const handleRefresh = (event) => {
-
         event.preventDefault();
         props.handleRefresh(props.id);
     }
