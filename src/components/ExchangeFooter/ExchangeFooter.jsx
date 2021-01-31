@@ -11,7 +11,7 @@ export default class ExchangeFooter extends Component{
                     </div>
                     <hr/>
                     <div>
-                        <p >Designed by: <a className="link" href="https://pedrojok01.github.io/coin-exchange/">pedrojok01</a></p>
+                        <p >Designed by: <a className="link" href="https://pedrojok01.github.io/">pedrojok01</a></p>
                     </div>
                 </div>
             </footer>
