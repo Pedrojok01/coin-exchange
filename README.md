@@ -1,6 +1,7 @@
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Link to my prototype: https://pedrojok01.github.io/coin-exchange/
 
 ## Available Scripts
 
