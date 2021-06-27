@@ -5,19 +5,19 @@
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.15.2",
     "@testing-library/jest-dom": "^5.11.9",
-    "@testing-library/react": "^11.2.3",
-    "@testing-library/user-event": "^12.6.0",
+    "@testing-library/react": "^12.0.0",
     "axios": "^0.21.1",
-    "bootstrap": "^4.6.0",
-    "bootswatch": "^4.6.0",
+    "bootswatch": "^5.0.2",
+    "eslint-config-react-app": "^6.0.0",
     "gh-pages": "^3.1.0",
+    "npm": "^7.19.0",
+    "prop-types": "^15.7.2",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
-    "react-scripts": "4.0.1",
+    "react-scripts": "^4.0.3",
     "reactjs-popup": "^2.0.4",
     "styled-components": "^5.2.1",
-    "uuid": "^8.3.2",
-    "web-vitals": "^0.2.4"
+    "web-vitals": "^2.0.1"
   },
   "homepage": "https://pedrojok01.github.io/coin-exchange",
   "scripts": {
